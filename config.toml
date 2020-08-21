@@ -1,4 +1,4 @@
 baseURL = "http://jmh1234.github.io/"
 languageCode = "zh-Hans"
 title = "小叽的博客"
-theme="tranquilpeak"
+theme="ananke"
