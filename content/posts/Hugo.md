@@ -1,5 +1,5 @@
 ---
-title: "**Hugo**"
+title: "Hugo"
 date: 2020-08-21T11:05:18+08:00
 draft: false
 ---
