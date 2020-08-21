@@ -1,11 +1,16 @@
 ---
 title: "Hugo"
 date: 2020-08-21T11:05:18+08:00
+author: 小叽
 draft: false
 ---
 
+Hugo是一个由Go语言实现的静态页面生成器，是世界上最快的博客生成器。
+<!--more-->
 # Hugo简介
-Hugo是一个由Go语言实现的静态页面生成器，所有页面都是通过Markdown(标记语言)开发，它能够快速的在GitHub上搭建个人静态博客。它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
+Hugo是一个由Go语言实现的静态页面生成器，所有页面都是通过Markdown(标记语言)开发。
+它能够快速的在GitHub上搭建个人静态博客。它使用起来非常简单，相对于Jekyll复杂的安装设置来说，
+Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
 
 Hugo官网：[https://gohugo.io/](https://gohugo.io/)
 
