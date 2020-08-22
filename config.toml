@@ -25,7 +25,7 @@ hasCJKLanguage = true
 
   author = "小叽"
   description = "我的学习记录"
-  avatar = "/me/yy.jpg"
+  avatar = "/me/portrait.jpg"
   motto = "前路漫漫，为剑所伴。"
   categoriesLimitInHeader = 6
 
