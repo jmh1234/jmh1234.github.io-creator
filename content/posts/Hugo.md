@@ -6,6 +6,7 @@ draft: false
 ---
 
 Hugo是一个由Go语言实现的静态页面生成器，是世界上最快的博客生成器。
+
 <!--more-->
 # Hugo简介
 Hugo是一个由Go语言实现的静态页面生成器，所有页面都是通过Markdown(标记语言)开发。
@@ -20,6 +21,7 @@ Hugo官网：[https://gohugo.io/](https://gohugo.io/)
 brew install hugo
 hugo version
 ````
+
 ## windows 安装方式
 1. 在 [Hugo Releases](https://github.com/gohugoio/hugo/releases) 页面上下载hugo_XX_Windows-64bit.zip。
 2. 下载的压缩包解压到hugo目录 例如：D:/Software/hugo 。
@@ -88,7 +90,7 @@ Press Ctrl+C to stop
 在你的浏览器里面输入：localhost:1313
 你在md文件中添加的内容就会展示到浏览器中，现在一个本地博客站点就搭建完成了。所有静态页面都会生成到 public 目录下，生成静态网站后并push到你的GitHub Pages上，就能得到一个在线的个人博客了。
 
-# Git Push
+# 上传(发布)Git
 在Git新建仓库XXX_github.io，将生成的public文件夹上传到仓库XXX_github.io项目中，并提交版本。
 现在你就可以用浏览器输入：[jmh1234.github.io](jmh1234.github.io) 就可以访问博客了。
 

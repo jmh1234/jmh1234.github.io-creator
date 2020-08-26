@@ -1,11 +1,11 @@
 ---
 title: "Spring Boot项目部署以及负载均衡"
-date: 2020-08-21T14:07:45+08:00
+date: 2020-08-26T14:07:45+08:00
 draft: false
 author: 小叽
 ---
 
-本文将介绍Spring Boot项目的三种部署方式以及使用Nginx作为负载均衡器。
+本文主要介绍Spring Boot项目的三种部署方式以及使用Nginx作为负载均衡器进行流量转发。
 
 <!--more-->
 # 集群、负载均衡、分布式的区别与联系
@@ -27,14 +27,14 @@ author: 小叽
 还可以根据每个节点上不同的可用资源或网络的特殊环境来进行优化。
 
 # Spring Boot项目的部署
-本次部署的Spring Boot项目中涉及到的mysql数据库以及redis缓存都在docker容器中，所以首先要将它们在docker中启动。
+本文介绍部署的Spring Boot项目使用docker容器中的mysql数据库以及redis，所以我们要将它们在docker容器中启动。
 1. 启动[docker mysql](https://hub.docker.com/_/mysql/)数据库：`docker run --restart=always -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yourPassword -d mysql`
 2. 启动[docker redis](https://hub.docker.com/_/redis/)缓存：`docker run -p 6379:6379 -d redis`
 3. 使用flyway进行数据迁移：`mvn flyway:migrate`
 
-## maven插件exec部署
+## exec插件部署
 pom.xml文件配置：
-````
+````xml
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
@@ -60,26 +60,28 @@ pom.xml文件配置：
 ## jar包部署Spring Boot项目
 ### 生成Jar文件
 pom.xml文件配置：
-````
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-        <source>1.8</source>
-        <target>1.8</target>
-    </configuration>
-</plugin><!--打jar包-->
-<plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <executions>
-        <execution>
-            <goals>
-                <goal>repackage</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin><!--打jar包-->
+````xml
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+        </configuration>
+    </plugin><!--打jar包-->
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin><!--打jar包-->
+</plugins>
 ````
 
 在pom文件中引入上述配置后在控制台窗口执行`mvn package`获取该项目的jar文件，该文件位于target目录下。
@@ -90,8 +92,8 @@ pom.xml文件配置：
 3. -Dserver.port=8081 指令为了指定额外的端口号为8081(8080端口已经被前一个部署的项目占用)。
 
 ## docker 部署
-dockerfile文件内容
-````
+Dockerfile文件内容：
+````dockerfile
 FROM java:openjdk-8u111-alpine
 
 RUN mkdir /app
