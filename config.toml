@@ -3,6 +3,20 @@ languageCode = "zh-Hans"
 title = "jimh的博客"
 theme="LeaveIt"
 
+paginate = 12
+enableEmoji = true
+enableRobotsTXT = true
+googleAnalytics = ""
+
+preserveTaxonomyNames = true
+
+[blackfriday]
+  hrefTargetBlank = true
+  nofollowLinks = true
+  noreferrerLinks = true
+
+[Permalinks]
+ posts = "/:year/:filename/"
 
 [menu]
   [[menu.main]]
