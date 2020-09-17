@@ -1,5 +1,5 @@
 ---
-title: "try catch finally return"
+title: "try-catch-finally-return"
 date: 2020-08-30T18:07:45+08:00
 draft: false
 categories: ["Java"]
@@ -7,7 +7,7 @@ tags: ["Java"]
 author: 小叽
 ---
 
-本文将介绍有return的情况下try catch finally的执行顺序。
+本文将介绍有return的情况下try-catch-finally的执行顺序。
 
 <!--more-->
 
