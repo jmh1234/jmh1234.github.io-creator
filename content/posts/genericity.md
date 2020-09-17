@@ -1,5 +1,5 @@
 ---
-title: "泛型"
+title: "genericity"
 date: 2020-09-05T11:05:18+08:00
 author: 小叽
 categories: ["Java"]
