@@ -1,7 +1,9 @@
 ---
-title: "Hugo"
+title: "Hugo博客搭建"
 date: 2020-08-21T11:05:18+08:00
 author: 小叽
+categories: ["blog"]
+tags: ["blog"]
 draft: false
 ---
 

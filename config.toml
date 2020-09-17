@@ -31,10 +31,6 @@ preserveTaxonomyNames = true
     name = "Tags"
     url = "/tags/"
     weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 4
 
 [params.social]
     GitHub = "jmh1234"

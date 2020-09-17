@@ -1,7 +1,9 @@
 ---
 title: "Spring Boot项目部署以及负载均衡"
-date: 2020-08-26T14:07:45+08:00
+date: 2020-08-28T10:07:45+08:00
 draft: false
+categories: ["Java", "Nginx", "Spring Boot"]
+tags: ["Java", "Nginx", "Spring Boot"]
 author: 小叽
 ---
 
