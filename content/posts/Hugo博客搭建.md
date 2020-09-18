@@ -7,15 +7,15 @@ tags: ["blog"]
 draft: false
 ---
 
-Hugo是一个由Go语言实现的静态页面生成器，是世界上最快的博客生成器。
+Hugo 是一个由 Go 语言实现的静态页面生成器，是世界上最快的博客生成器。
 
 <!--more-->
 
 # Hugo简介
-Hugo是一个由Go语言实现的静态页面生成器，所有页面都是通过Markdown(标记语言)开发。
+Hugo 是一个由 Go 语言实现的静态页面生成器，所有页面都是通过 Markdown (标记语言)开发。
 它能够快速的在GitHub上搭建个人静态博客。它使用起来非常简单，相对于Jekyll复杂的安装设置来说，
-Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。  
-Hugo是一种通用的网站框架。严格来说，Hugo应该被称作静态网站生成器。  
+Hugo 仅需要一个二进制文件 hugo(hugo.exe) 即可轻松用于本地调试和生成静态页面。  
+Hugo 是一种通用的网站框架。严格来说，Hugo 应该被称作静态网站生成器。  
 静态网站生成器从字面上来理解，就是将你的内容生成静态网站。所谓“静态”的含义其实反映在网站页面的生成的时间。一般的web服务器（WordPress, Ghost, Drupal等等）在收到页面请求时，需要调用数据库生成页面（也就是HTML代码），再返回给用户请求。而静态网站则不需要在收到请求后生成页面，而是在整个网站建立起之前就将所有的页面全部生成完成，页面一经生成便称为静态文件，访问时直接返回现成的静态页面，不需要数据库的参与。
 
 Hugo官网：[https://gohugo.io/](https://gohugo.io/)
@@ -29,9 +29,9 @@ hugo version
 
 ## windows 安装方式
 1. 在 [Hugo Releases](https://github.com/gohugoio/hugo/releases) 页面上下载hugo_XX_Windows-64bit.zip。
-2. 下载的压缩包解压到hugo目录 例如：D:/Software/hugo 。
+2. 下载的压缩包解压到 hugo 目录 例如：D:/Software/hugo 。
 3. 将压缩包的解压路径添加到环境变量PATH中。
-4. 重启机器，在cmd窗口输入 `hugo version` 查看Hugo是否安装成功。
+4. 重启机器，在cmd窗口输入  `hugo version` 查看Hugo是否安装成功。
 
 # 创建本地博客
 ## 生成站点

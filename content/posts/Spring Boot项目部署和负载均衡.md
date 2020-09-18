@@ -7,7 +7,7 @@ tags: ["Java", "Nginx", "Spring Boot"]
 author: 小叽
 ---
 
-本文主要介绍Spring Boot项目的三种部署方式以及使用Nginx作为负载均衡器进行流量转发。
+本文主要介绍Spring Boot 项目的三种部署方式以及使用 Nginx 作为负载均衡器进行流量转发。
 
 <!--more-->
 # 集群、负载均衡、分布式的区别与联系
@@ -20,7 +20,7 @@ author: 小叽
 将一个大的业务拆分成多个小的业务分别部署到不同的服务器上。其目的是利用更多的机器，处理更多的数据。
 
 ## 负载均衡
-负载均衡是指将请求分摊到多个操作单元也就是分开部署的服务器上，Nginx是常用的反向代理服务器，可以用来做负载均衡。
+负载均衡是指将请求分摊到多个操作单元也就是分开部署的服务器上，Nginx 是常用的反向代理服务器，可以用来做负载均衡。
 
 ## 负载均衡集群
 负载均衡集群为企业需求提供了更实用的系统。如名称所暗示，该系统使负载(流量)可以在计算机集群中尽可能平均分摊处理，这样的系统非常适合于运行同一组应用程序的大量用户。
@@ -29,7 +29,7 @@ author: 小叽
 还可以根据每个节点上不同的可用资源或网络的特殊环境来进行优化。
 
 # Spring Boot项目的部署
-本文介绍部署的Spring Boot项目使用docker容器中的mysql数据库以及redis，所以我们要将它们在docker容器中启动。
+本文介绍部署的Spring Boot项目使用 docker 容器中的 mysql 数据库以及 redis，所以我们要将它们在docker容器中启动。
 1. 启动[docker mysql](https://hub.docker.com/_/mysql/)数据库：`docker run --restart=always -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yourPassword -d mysql`
 2. 启动[docker redis](https://hub.docker.com/_/redis/)缓存：`docker run -p 6379:6379 -d redis`
 3. 使用flyway进行数据迁移：`mvn flyway:migrate`
@@ -54,9 +54,9 @@ pom.xml文件配置：
 </plugin> <!--maven exec plugin-->
 ````
 
-1. 在pom文件中引入上述配置
-2. 在控制台窗口执行`mvn exec:exec`即可部署该项目。
-3. 或者在`cmd`窗口中奖路径设置到当前项目的根路径下后执行命令`mvn exec:exec`同样可以部署该项目。
+1. 在 pom 文件中引入上述配置
+2. 在控制台窗口执行 `mvn exec:exec` 即可部署该项目。
+3. 或者在 `cmd` 窗口中奖路径设置到当前项目的根路径下后执行命令 `mvn exec:exec` 同样可以部署该项目。
 4. 该项目的默认端口号为8080
 
 ## jar包部署Spring Boot项目
@@ -86,11 +86,11 @@ pom.xml文件配置：
 </plugins>
 ````
 
-在pom文件中引入上述配置后在控制台窗口执行`mvn package`获取该项目的jar文件，该文件位于target目录下。
+在pom文件中引入上述配置后在控制台窗口执行 `mvn package` 获取该项目的jar文件，该文件位于 target 目录下。
 
 ### 部署
-1. 在控制台窗口将路径设置到target下，执行命令`java -Dserver.port=8081 -jar spring-boot-project-0.0.1.jar`即可部署该项目。
-2. 或者在`cmd`窗口中将路径设置到当前项目的target目录下，执行命令`java -Dserver.port=8081 -jar spring-boot-project-0.0.1.jar`同样可以部署该项目。
+1. 在控制台窗口将路径设置到 target 下，执行命令 `java -Dserver.port=8081 -jar spring-boot-project-0.0.1.jar` 即可部署该项目。
+2. 或者在 `cmd` 窗口中将路径设置到当前项目的 target 目录下，执行命令 `java -Dserver.port=8081 -jar spring-boot-project-0.0.1.jar` 同样可以部署该项目。
 3. -Dserver.port=8081 指令为了指定额外的端口号为8081(8080端口已经被前一个部署的项目占用)。
 
 ## docker 部署
@@ -110,12 +110,12 @@ CMD ["java","-jar","spring-boot-project-0.0.1.jar"]
 
 ````
 
-1. 配置好dockerfile文件后通过`docker build .`将该项目制作成images。
-2. 通过`docker images` 查看当前容器中的镜像，找到刚刚制作的镜像的ID。
-3. 通过`docker run --restart=always --name=mySpringBootApp -p 8082:8080 -d <镜像id>` 启动该镜像
+1. 配置好 dockerfile 文件后通过 `docker build .` 将该项目制作成images。
+2. 通过 `docker images` 查看当前容器中的镜像，找到刚刚制作的镜像的ID。
+3. 通过 `docker run --restart=always --name=mySpringBootApp -p 8082:8080 -d <镜像id>` 启动该镜像
 ps：docker可以看做是一台独立的计算机要时刻注意ip地址的问题。
 
-## Nginx流量转发
+## Nginx 流量转发
 
 docker nginx官网：[https://hub.docker.com/_/nginx/](https://hub.docker.com/_/nginx/)  
 
@@ -141,6 +141,6 @@ http {
 ````
 
 1. 其中192.168.1.164路由器分配给为宿主机的ip地址，192.168.99.100为docker容器的地址。
-2. Nginx监听80端口，将流量均匀的转发给myapp1中的三个服务。其中8080通过exec插件部署、8081通过jar文件方式部署、8082通过docker部署。
-3. 启动Nginx：docker run -v "$(pwd)"/nginx.conf:/etc/nginx/nginx.conf:ro -p 80:80 -d nginx(当前的文件路径(pwd)为C:\Users\用户\tmp)
-4. Nginx启动成功后就可以通过 192.168.99.100 + 后台服务接口名称访问项目
+2. Nginx 监听80端口，将流量均匀的转发给 myapp1 中的三个服务。其中8080通过exec插件部署、8081通过jar文件方式部署、8082通过docker部署。
+3. 启动 Nginx：`docker run -v "$(pwd)"/nginx.conf:/etc/nginx/nginx.conf:ro -p 80:80 -d nginx` (当前的文件路径(pwd)为C:\Users\用户\tmp)
+4. Nginx 启动成功后就可以通过 192.168.99.100(主机地址) + 后台服务接口名称访问项目
