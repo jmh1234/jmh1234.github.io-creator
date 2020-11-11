@@ -37,6 +37,25 @@ docker run -d -u root --name=jenkins \
  映射到 /var/run/docker.sock ，ro 表示 docker 容器不能修改宿主机上的文件。
  6. 上述命令中 `jenkins/jenkins:lts` 表示需启动的镜像名称
  
+## docker 镜像的制作以及上传
+1. docker save blog > /tmp/blog.tar
+2. scp blog.tar ubuntu@146.56.220.117:/home/ubuntu/blog.tar
+3. docker load -i /home/ubuntu/blog.tar
+
+## blog项目 dockerfile 文件示例
+```dockerfile
+FROM java:openjdk-8u111-alpine
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY target/blog-0.0.1.jar /app
+
+EXPOSE 8080
+
+CMD ["java","-jar","blog-0.0.1.jar"]
+```
 
 # git
 ## git 提交文件指令
